@@ -1,26 +1,26 @@
-<h1>Listing sales_forecasts</h1>
+<h1>フォーキャスト一覧</h1>
 
 <table>
   <thead>
     <tr>
-      <th>Service center</th>
-      <th>Segment</th>
-      <th>Status</th>
-      <th>Area</th>
-      <th>Company</th>
-      <th>Division</th>
-      <th>Customer name</th>
-      <th>Instrument</th>
-      <th>Price</th>
-      <th>Budget</th>
-      <th>Certainty</th>
-      <th>Reporting date</th>
-      <th>Fixed date</th>
-      <th>Order date</th>
-      <th>Agent</th>
-      <th>Condition</th>
-      <th>Person in charge</th>
-      <th>Visible</th>
+      <th>SC</th>
+      <th>客層</th>
+      <th>状態</th>
+      <th>地域</th>
+      <th>顧客</th>
+      <th>部署</th>
+      <th>氏名</th>
+      <th>機種</th>
+      <th>金額</th>
+      <th>予算</th>
+      <th>確度</th>
+      <th>申請時期</th>
+      <th>確定時期</th>
+      <th>発注時期</th>
+      <th>代理店</th>
+      <th>状況</th>
+      <th>担当</th>
+      <th>表示</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -46,9 +46,9 @@
         <td><%= sales_forecast.condition %></td>
         <td><%= sales_forecast.person_in_charge %></td>
         <td><%= sales_forecast.visible %></td>
-        <td><%= link_to 'Show', sales_forecast %></td>
-        <td><%= link_to 'Edit', edit_sales_forecast_path(sales_forecast) %></td>
-        <td><%= link_to 'Destroy', sales_forecast, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to '詳細', sales_forecast %></td>
+        <td><%= link_to '編集', edit_sales_forecast_path(sales_forecast) %></td>
+        <td><%= link_to '削除', sales_forecast, method: :delete, data: { confirm: '削除しますか?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -56,4 +56,4 @@
 
 <br>
 
-<%= link_to 'New Sales forecast', new_sales_forecast_path %>
+<%= link_to '新規作成', new_sales_forecast_path %>

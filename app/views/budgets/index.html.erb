@@ -1,9 +1,9 @@
-<h1>Listing budgets</h1>
+<h1>予算一覧</h1>
 
 <table>
   <thead>
     <tr>
-      <th>Name</th>
+      <th>予算</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -12,9 +12,9 @@
     <% @budgets.each do |budget| %>
       <tr>
         <td><%= budget.name %></td>
-        <td><%= link_to 'Show', budget %></td>
-        <td><%= link_to 'Edit', edit_budget_path(budget) %></td>
-        <td><%= link_to 'Destroy', budget, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to '詳細', budget %></td>
+        <td><%= link_to '編集', edit_budget_path(budget) %></td>
+        <td><%= link_to '削除', budget, method: :delete, data: { confirm: '削除しますか?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -22,4 +22,4 @@
 
 <br>
 
-<%= link_to 'New Budget', new_budget_path %>
+<%= link_to '新規作成', new_budget_path %>

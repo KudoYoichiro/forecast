@@ -6,7 +6,7 @@ ja:
       certainty: 確度
       sales_forecast: フォーキャスト
       segment: 客層
-      service_center: サービスセンター
+      service_center: SC
       status: 状態
     attributes:
       area:
@@ -31,13 +31,13 @@ ja:
         price: 金額
         reporting_date: 申請時期
         segment_id: 客層
-        service_center_id: サービスセンター
+        service_center_id: SC
         status_id: 状態
         visible: 表示
       segment:
         name: 客層
       service_center:
-        name: サービスセンター
+        name: SC
       status:
         name: 状態
         color: 表示色

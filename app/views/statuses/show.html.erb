@@ -1,14 +1,14 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
+  <strong>状態:</strong>
   <%= @status.name %>
 </p>
 
 <p>
-  <strong>Color:</strong>
-  <%= @status.color %>
+  <strong>表示色:</strong>
+  <span style="color: <%= @status.color %>; background-color: <%= @status.color %>"><%= @status.color %></span>
 </p>
 
-<%= link_to 'Edit', edit_status_path(@status) %> |
-<%= link_to 'Back', statuses_path %>
+<%= link_to '編集', edit_status_path(@status) %> |
+<%= link_to '戻る', statuses_path %>

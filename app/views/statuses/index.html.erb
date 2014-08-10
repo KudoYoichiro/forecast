@@ -1,10 +1,9 @@
-<h1>Listing statuses</h1>
+<h1>状態一覧</h1>
 
 <table>
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Color</th>
+      <th>状態</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -12,11 +11,10 @@
   <tbody>
     <% @statuses.each do |status| %>
       <tr>
-        <td><%= status.name %></td>
-        <td><%= status.color %></td>
-        <td><%= link_to 'Show', status %></td>
-        <td><%= link_to 'Edit', edit_status_path(status) %></td>
-        <td><%= link_to 'Destroy', status, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td style="color: <%= status.color %>"><%= status.name %></td>
+        <td><%= link_to '詳細', status %></td>
+        <td><%= link_to '編集', edit_status_path(status) %></td>
+        <td><%= link_to '削除', status, method: :delete, data: { confirm: '削除しますか?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -24,4 +22,4 @@
 
 <br>
 
-<%= link_to 'New Status', new_status_path %>
+<%= link_to '新規作成', new_status_path %>

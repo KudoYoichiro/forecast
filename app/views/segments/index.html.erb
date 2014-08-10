@@ -1,9 +1,9 @@
-<h1>Listing segments</h1>
+<h1>客層一覧</h1>
 
 <table>
   <thead>
     <tr>
-      <th>Name</th>
+      <th>客層</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -12,9 +12,9 @@
     <% @segments.each do |segment| %>
       <tr>
         <td><%= segment.name %></td>
-        <td><%= link_to 'Show', segment %></td>
-        <td><%= link_to 'Edit', edit_segment_path(segment) %></td>
-        <td><%= link_to 'Destroy', segment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to '詳細', segment %></td>
+        <td><%= link_to '編集', edit_segment_path(segment) %></td>
+        <td><%= link_to '削除', segment, method: :delete, data: { confirm: '削除しますか?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -22,4 +22,4 @@
 
 <br>
 
-<%= link_to 'New Segment', new_segment_path %>
+<%= link_to '新規作成', new_segment_path %>

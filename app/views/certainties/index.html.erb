@@ -1,9 +1,9 @@
-<h1>Listing certainties</h1>
+<h1>確度一覧</h1>
 
 <table>
   <thead>
     <tr>
-      <th>Name</th>
+      <th>確度</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -12,9 +12,9 @@
     <% @certainties.each do |certainty| %>
       <tr>
         <td><%= certainty.name %></td>
-        <td><%= link_to 'Show', certainty %></td>
-        <td><%= link_to 'Edit', edit_certainty_path(certainty) %></td>
-        <td><%= link_to 'Destroy', certainty, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to '詳細', certainty %></td>
+        <td><%= link_to '編集', edit_certainty_path(certainty) %></td>
+        <td><%= link_to '削除', certainty, method: :delete, data: { confirm: '削除しますか?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -22,4 +22,4 @@
 
 <br>
 
-<%= link_to 'New Certainty', new_certainty_path %>
+<%= link_to '新規作成', new_certainty_path %>

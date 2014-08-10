@@ -1,9 +1,9 @@
-<h1>Listing service_centers</h1>
+<h1>SC一覧</h1>
 
 <table>
   <thead>
     <tr>
-      <th>Name</th>
+      <th>SC</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -12,9 +12,9 @@
     <% @service_centers.each do |service_center| %>
       <tr>
         <td><%= service_center.name %></td>
-        <td><%= link_to 'Show', service_center %></td>
-        <td><%= link_to 'Edit', edit_service_center_path(service_center) %></td>
-        <td><%= link_to 'Destroy', service_center, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to '詳細', service_center %></td>
+        <td><%= link_to '編集', edit_service_center_path(service_center) %></td>
+        <td><%= link_to '削除', service_center, method: :delete, data: { confirm: '削除しますか?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -22,4 +22,4 @@
 
 <br>
 
-<%= link_to 'New Service center', new_service_center_path %>
+<%= link_to '新規作成', new_service_center_path %>
