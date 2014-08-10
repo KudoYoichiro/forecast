@@ -5,4 +5,7 @@ class SalesForecast < ActiveRecord::Base
   belongs_to :area
   belongs_to :budget
   belongs_to :certainty
+  
+  validates :reporting_date,
+  format: { with: /\A[0-9]{4}-[0-9]{2}\z/ }
 end
