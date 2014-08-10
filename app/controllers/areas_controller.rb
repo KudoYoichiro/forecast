@@ -20,12 +20,18 @@ class AreasController < ApplicationController
 
   # GET /areas/1/edit
   def edit
+    @service_centers = ServiceCenter.all
+    @service_center_ids = @area.service_centers.map{|sc| sc.id}
   end
 
   # POST /areas
   # POST /areas.json
-  def create
+  def create   
     @area = Area.new(area_params)
+    unless params[:service_centers].nil?
+      service_centers = ServiceCenter.find(params[:service_centers])
+      @area.service_centers << service_centers
+    end
 
     respond_to do |format|
       if @area.save
@@ -41,6 +47,13 @@ class AreasController < ApplicationController
   # PATCH/PUT /areas/1
   # PATCH/PUT /areas/1.json
   def update
+    unless params[:service_centers].nil?
+      service_centers = ServiceCenter.find(params[:service_centers])
+      @area.service_centers = service_centers
+    else
+      @area.service_centers.clear
+    end
+    
     respond_to do |format|
       if @area.update(area_params)
         format.html { redirect_to @area, notice: 'Area was successfully updated.' }
