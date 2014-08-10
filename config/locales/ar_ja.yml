@@ -1,0 +1,43 @@
+ja:
+  activerecord:
+    models:
+      area: 地域
+      budget: 予算
+      certainty: 確度
+      sales_forecast: フォーキャスト
+      segment: 客層
+      service_center: サービスセンター
+      status: 状態
+    attributes:
+      area:
+        name: 地域名
+      budget:
+        name: 予算
+      certainty:
+        name: 確度
+      sales_forecast:
+        agent: 代理店
+        area_id: 地域
+        budget_id: 予算
+        certainty_id: 確度
+        company: 顧客名
+        condition: 状況
+        customer_name: 氏名
+        division: 部署
+        fixed_date: 確定時期
+        instrument: 機種
+        order_date: 発注時期
+        person_in_charge: 担当
+        price: 金額
+        reporting_date: 申請時期
+        segment_id: 客層
+        service_center_id: サービスセンター
+        status_id: 状態
+        visible: 表示
+      segment:
+        name: 客層
+      service_center:
+        name: サービスセンター
+      status:
+        name: 状態
+        color: 表示色
