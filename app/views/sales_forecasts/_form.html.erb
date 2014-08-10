@@ -1,0 +1,89 @@
+<%= form_for(@sales_forecast) do |f| %>
+  <% if @sales_forecast.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@sales_forecast.errors.count, "error") %> prohibited this sales_forecast from being saved:</h2>
+
+      <ul>
+      <% @sales_forecast.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :service_center_id %><br>
+    <%= f.text_field :service_center_id %>
+  </div>
+  <div class="field">
+    <%= f.label :segment_id %><br>
+    <%= f.text_field :segment_id %>
+  </div>
+  <div class="field">
+    <%= f.label :status_id %><br>
+    <%= f.text_field :status_id %>
+  </div>
+  <div class="field">
+    <%= f.label :area_id %><br>
+    <%= f.text_field :area_id %>
+  </div>
+  <div class="field">
+    <%= f.label :company %><br>
+    <%= f.text_field :company %>
+  </div>
+  <div class="field">
+    <%= f.label :division %><br>
+    <%= f.text_field :division %>
+  </div>
+  <div class="field">
+    <%= f.label :customer_name %><br>
+    <%= f.text_field :customer_name %>
+  </div>
+  <div class="field">
+    <%= f.label :instrument %><br>
+    <%= f.text_field :instrument %>
+  </div>
+  <div class="field">
+    <%= f.label :price %><br>
+    <%= f.number_field :price %>
+  </div>
+  <div class="field">
+    <%= f.label :budget_id %><br>
+    <%= f.text_field :budget_id %>
+  </div>
+  <div class="field">
+    <%= f.label :certainty_id %><br>
+    <%= f.text_field :certainty_id %>
+  </div>
+  <div class="field">
+    <%= f.label :reporting_date %><br>
+    <%= f.text_field :reporting_date %>
+  </div>
+  <div class="field">
+    <%= f.label :fixed_date %><br>
+    <%= f.text_field :fixed_date %>
+  </div>
+  <div class="field">
+    <%= f.label :order_date %><br>
+    <%= f.text_field :order_date %>
+  </div>
+  <div class="field">
+    <%= f.label :agent %><br>
+    <%= f.text_field :agent %>
+  </div>
+  <div class="field">
+    <%= f.label :condition %><br>
+    <%= f.text_area :condition %>
+  </div>
+  <div class="field">
+    <%= f.label :person_in_charge %><br>
+    <%= f.text_area :person_in_charge %>
+  </div>
+  <div class="field">
+    <%= f.label :visible %><br>
+    <%= f.check_box :visible %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,1 @@
+json.extract! @sales_forecast, :id, :service_center_id, :segment_id, :status_id, :area_id, :company, :division, :customer_name, :instrument, :price, :budget_id, :certainty_id, :reporting_date, :fixed_date, :order_date, :agent, :condition, :person_in_charge, :visible, :created_at, :updated_at

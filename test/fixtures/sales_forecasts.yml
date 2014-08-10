@@ -1,0 +1,41 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  service_center_id: 
+  segment_id: 
+  status_id: 
+  area_id: 
+  company: MyString
+  division: MyString
+  customer_name: MyString
+  instrument: MyString
+  price: 1
+  budget_id: 
+  certainty_id: 
+  reporting_date: MyString
+  fixed_date: MyString
+  order_date: MyString
+  agent: MyString
+  condition: MyText
+  person_in_charge: MyText
+  visible: false
+
+two:
+  service_center_id: 
+  segment_id: 
+  status_id: 
+  area_id: 
+  company: MyString
+  division: MyString
+  customer_name: MyString
+  instrument: MyString
+  price: 1
+  budget_id: 
+  certainty_id: 
+  reporting_date: MyString
+  fixed_date: MyString
+  order_date: MyString
+  agent: MyString
+  condition: MyText
+  person_in_charge: MyText
+  visible: false

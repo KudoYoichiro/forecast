@@ -1,0 +1,2 @@
+module SalesForecastsHelper
+end
