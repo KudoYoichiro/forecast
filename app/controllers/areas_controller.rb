@@ -15,6 +15,7 @@ class AreasController < ApplicationController
   # GET /areas/new
   def new
     @area = Area.new
+    @service_centers = ServiceCenter.all
   end
 
   # GET /areas/1/edit
