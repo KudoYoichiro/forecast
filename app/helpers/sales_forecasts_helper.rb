@@ -27,7 +27,7 @@ module SalesForecastsHelper
   # certainty: 確率
   def expected_value(value, certainty)
     # 引数vakueがnilの場合は空文字を返す
-    return '' if value.nil?
+    return '' if value.blank?|| certainty.blank?
     
     # 期待値を返す
     number_with_delimiter(value * certainty / 100)
@@ -37,7 +37,7 @@ module SalesForecastsHelper
   # attr: 取り出したい属性
   def get_attribute(obj, attr)
     # 引数objがnilの場合は空文字を返す
-    return '' if obj.nil?
+    return '' if obj.blank?
     
     # 引数attributeを取り出す
     obj.attributes[attr.to_s]

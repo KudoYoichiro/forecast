@@ -1,9 +1,11 @@
 <p id="notice"><%= notice %></p>
 
+<% if $sc_switch %>
 <p>
   <strong>SC:</strong>
   <%= get_attribute(@sales_forecast.service_center, :name) %>
 </p>
+<% end %>
 
 <p>
   <strong>客層:</strong>

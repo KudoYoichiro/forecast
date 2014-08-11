@@ -28,7 +28,7 @@ class AreasController < ApplicationController
   # POST /areas.json
   def create   
     @area = Area.new(area_params)
-    unless params[:service_centers].nil?
+    unless params[:service_centers].blank?
       service_centers = ServiceCenter.find(params[:service_centers])
       @area.service_centers << service_centers
     end
@@ -47,7 +47,7 @@ class AreasController < ApplicationController
   # PATCH/PUT /areas/1
   # PATCH/PUT /areas/1.json
   def update
-    unless params[:service_centers].nil?
+    unless params[:service_centers].blank?
       service_centers = ServiceCenter.find(params[:service_centers])
       @area.service_centers = service_centers
     else

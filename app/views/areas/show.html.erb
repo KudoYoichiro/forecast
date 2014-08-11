@@ -3,6 +3,10 @@
 <p>
   <strong>地域:</strong>
   <%= @area.name %>
+<% if $sc_switch %>
+  <strong>SC:</strong>
+  <%= @area.service_centers.map{|service_center| service_center.name}*", " %>
+<% end %>
 </p>
 
 <%= link_to '編集', edit_area_path(@area) %> |

@@ -9,10 +9,10 @@ class SalesForecastsController < ApplicationController
     @sales_forecasts = SalesForecast.all
     @service_center_id = params[:sc]
     
-    unless @service_center_id.nil?
-      @sales_forecasts.where!(service_center_id: @service_center_id)
+    unless params[:sc].blank?
+      @sales_forecasts.where!(service_center_id: params[:sc])
     end
-    if params[:show_all].nil?
+    if params[:show_all].blank?
       @sales_forecasts.where!(visible: true)
     end
     @sales_forecasts.order!(updated_at: :desc)
@@ -27,10 +27,20 @@ class SalesForecastsController < ApplicationController
   def new
     @sales_forecast = SalesForecast.new
     @sales_forecast.visible = true
+    @service_center_id = params[:sc]
+
+    unless params[:sc].blank?
+      service_center = ServiceCenter.find(params[:sc])
+      @selected_area_id = service_center.areas.blank? ? nil : service_center.areas.first.id
+    else
+      @selected_area_id = nil
+    end
   end
 
   # GET /sales_forecasts/1/edit
   def edit
+    @service_center_id = @sales_forecast.service_center.id unless @sales_forecast.service_center.blank?
+    @selected_area_id = @sales_forecast.area.id unless @sales_forecast.area.blank?
   end
 
   # POST /sales_forecasts

@@ -10,11 +10,13 @@
       </ul>
     </div>
   <% end %>
-
+  
+  <% if $sc_switch %>
   <div class="field">
     <%= f.label :service_center_id %><br>
-    <%= f.collection_select :service_center_id, @service_centers, :id, :name, include_blank: true %>
+    <%= f.collection_select :service_center_id, @service_centers, :id, :name, include_blank: true, selected: @service_center_id %>
   </div>
+  <% end %>
   <div class="field">
     <%= f.label :segment_id %><br>
     <%= f.collection_select :segment_id, @segments, :id, :name %>
@@ -25,10 +27,11 @@
   </div>
   <div class="field">
     <%= f.label :area_id %><br>
-    <!-- 大阪サービスセンターのみでフォーキャストを管理する場合は、こちらをアクティブにしてください。
+    <% if $sc_switch %>
+    <%= f.grouped_collection_select :area_id, @service_centers, :areas, :name, :id, :name, selected: @selected_area_id %>
+    <% else %>
     <%= f.collection_select :area_id, @areas, :id, :name %>
-    -->
-    <%= f.grouped_collection_select :area_id, @service_centers, :areas, :name, :id, :name %>
+    <% end %>
   </div>
   <div class="field">
     <%= f.label :company %><br>

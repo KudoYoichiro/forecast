@@ -8,6 +8,7 @@
 
 <h1>フォーキャスト一覧</h1>
 
+<% if $sc_switch %>
 <ul class="nav nav-tabs" role="tablist">
 	<li<% if @service_center_id.nil? %> class="active" <% end %>>
 		<%= link_to 'すべて', sales_forecasts_path %>
@@ -18,10 +19,14 @@
 	</li>
 	<% end %>
 </ul>
+<% end %>
+
 <table id="myTable" class="table table-striped table-condensed table-hover tablesorter">
   <thead>
     <tr>
+    	<% if $sc_switch %>
       <th>SC</th>
+      <% end %>
       <th>客層</th>
       <th>状態</th>
       <th>地域</th>
@@ -47,7 +52,9 @@
   <tbody>
     <% @sales_forecasts.each do |sales_forecast| %>
       <tr>
+      	<% if $sc_switch %>
         <td style="color: <%= get_attribute(sales_forecast.status, :color) %>"><%= get_attribute(sales_forecast.service_center, :name) %></td>
+        <% end %>
         <td style="color: <%= get_attribute(sales_forecast.status, :color) %>"><%= get_attribute(sales_forecast.segment, :name) %></td>
         <td style="color: <%= get_attribute(sales_forecast.status, :color) %>"><%= get_attribute(sales_forecast.status, :name) %></td>
         <td style="color: <%= get_attribute(sales_forecast.status, :color) %>"><%= get_attribute(sales_forecast.area, :name) %></td>
@@ -58,7 +65,7 @@
         <td style="color: <%= get_attribute(sales_forecast.status, :color) %>"><%= number_with_delimiter(sales_forecast.price) %></td>
         <td style="color: <%= get_attribute(sales_forecast.status, :color) %>"><%= get_attribute(sales_forecast.budget, :name) %></td>
         <td style="color: <%= get_attribute(sales_forecast.status, :color) %>"><%= get_attribute(sales_forecast.certainty, :name) %></td>
-        <td style="color: <%= get_attribute(sales_forecast.status, :color) %>"><%= number_with_delimiter(expected_value(sales_forecast.price, get_attribute(sales_forecast.certainty, :name))) %></td>
+        <td style="color: <%= get_attribute(sales_forecast.status, :color) %>"><%= expected_value(sales_forecast.price, get_attribute(sales_forecast.certainty, :name)) %></td>
         <td style="color: <%= get_attribute(sales_forecast.status, :color) %>"><%= sales_forecast.reporting_date %></td>
         <td style="color: <%= get_attribute(sales_forecast.status, :color) %>"><%= sales_forecast.fixed_date %></td>
         <td style="color: <%= get_attribute(sales_forecast.status, :color) %>"><%= sales_forecast.order_date %></td>
@@ -76,5 +83,5 @@
 
 <br>
 
-<%= link_to '新規作成', new_sales_forecast_path %> | 
+<%= link_to '新規作成', {action: :new, sc: @service_center_id} %> | 
 <%= link_to 'すべてを表示', {action: :index, show_all: "true", sc: @service_center_id} %>
