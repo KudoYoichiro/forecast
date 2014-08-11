@@ -1,5 +1,15 @@
 <h1>フォーキャスト一覧</h1>
 
+<ul class="nav nav-tabs" role="tablist">
+	<li<% if @service_center_id.nil? %> class="active" <% end %>>
+		<%= link_to 'すべて', sales_forecasts_path %>
+	</li>
+	<% @service_centers.each do |service_center| %>
+	<li<% if service_center.id == @service_center_id.to_i %> class="active" <% end %>>
+		<%= link_to service_center.name, {action: :index, sc: service_center.id} %>
+	</li>
+	<% end %>
+</ul>
 <table>
   <thead>
     <tr>
