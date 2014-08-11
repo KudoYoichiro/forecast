@@ -12,7 +12,7 @@
   <% end %>
 
   <div class="field">
-  	<%= label_tag 'service_centers', 'サービスセンター' %><br />
+  	<%= label_tag 'service_centers', 'SC' %><br />
     <%= select_tag('service_centers', options_from_collection_for_select(@service_centers, :id, :name, selected: @service_center_ids), multiple: true) %>
   </div>
   <div class="field">

@@ -29,7 +29,7 @@
   <tbody>
     <% @sales_forecasts.each do |sales_forecast| %>
       <tr>
-        <td><%= get_attribute(sales_forecast.service_center, :name) %></td>
+        <td style="color: <%= get_attribute(sales_forecast.status, :color) %>"><%= get_attribute(sales_forecast.service_center, :name) %></td>
         <td style="color: <%= get_attribute(sales_forecast.status, :color) %>"><%= get_attribute(sales_forecast.segment, :name) %></td>
         <td style="color: <%= get_attribute(sales_forecast.status, :color) %>"><%= get_attribute(sales_forecast.status, :name) %></td>
         <td style="color: <%= get_attribute(sales_forecast.status, :color) %>"><%= get_attribute(sales_forecast.area, :name) %></td>
@@ -58,4 +58,5 @@
 
 <br>
 
-<%= link_to '新規作成', new_sales_forecast_path %>
+<%= link_to '新規作成', new_sales_forecast_path %> | 
+<%= link_to 'すべてを表示', {action: :index, show_all: "true"} %>
