@@ -30,24 +30,24 @@
     <% @sales_forecasts.each do |sales_forecast| %>
       <tr>
         <td><%= get_attribute(sales_forecast.service_center, :name) %></td>
-        <td><%= get_attribute(sales_forecast.segment, :name) %></td>
-        <td><%= get_attribute(sales_forecast.status, :name) %></td>
-        <td><%= get_attribute(sales_forecast.area, :name) %></td>
-        <td><%= sales_forecast.company %></td>
-        <td><%= sales_forecast.division %></td>
-        <td><%= sales_forecast.customer_name %></td>
-        <td><%= sales_forecast.instrument %></td>
-        <td><%= number_with_delimiter(sales_forecast.price) %></td>
-        <td><%= get_attribute(sales_forecast.budget, :name) %></td>
-        <td><%= get_attribute(sales_forecast.certainty, :name) %></td>
-        <td><%= number_with_delimiter(expected_value(sales_forecast.price, get_attribute(sales_forecast.certainty, :name))) %></td>
-        <td><%= sales_forecast.reporting_date %></td>
-        <td><%= sales_forecast.fixed_date %></td>
-        <td><%= sales_forecast.order_date %></td>
-        <td><%= sales_forecast.agent %></td>
-        <td><%= sales_forecast.condition %></td>
-        <td><%= sales_forecast.person_in_charge %></td>
-        <td><%= sales_forecast.visible %></td>
+        <td style="color: <%= get_attribute(sales_forecast.status, :color) %>"><%= get_attribute(sales_forecast.segment, :name) %></td>
+        <td style="color: <%= get_attribute(sales_forecast.status, :color) %>"><%= get_attribute(sales_forecast.status, :name) %></td>
+        <td style="color: <%= get_attribute(sales_forecast.status, :color) %>"><%= get_attribute(sales_forecast.area, :name) %></td>
+        <td style="color: <%= get_attribute(sales_forecast.status, :color) %>"><%= sales_forecast.company %></td>
+        <td style="color: <%= get_attribute(sales_forecast.status, :color) %>"><%= sales_forecast.division %></td>
+        <td style="color: <%= get_attribute(sales_forecast.status, :color) %>"><%= sales_forecast.customer_name %></td>
+        <td style="color: <%= get_attribute(sales_forecast.status, :color) %>"><%= sales_forecast.instrument %></td>
+        <td style="color: <%= get_attribute(sales_forecast.status, :color) %>"><%= number_with_delimiter(sales_forecast.price) %></td>
+        <td style="color: <%= get_attribute(sales_forecast.status, :color) %>"><%= get_attribute(sales_forecast.budget, :name) %></td>
+        <td style="color: <%= get_attribute(sales_forecast.status, :color) %>"><%= get_attribute(sales_forecast.certainty, :name) %></td>
+        <td style="color: <%= get_attribute(sales_forecast.status, :color) %>"><%= number_with_delimiter(expected_value(sales_forecast.price, get_attribute(sales_forecast.certainty, :name))) %></td>
+        <td style="color: <%= get_attribute(sales_forecast.status, :color) %>"><%= sales_forecast.reporting_date %></td>
+        <td style="color: <%= get_attribute(sales_forecast.status, :color) %>"><%= sales_forecast.fixed_date %></td>
+        <td style="color: <%= get_attribute(sales_forecast.status, :color) %>"><%= sales_forecast.order_date %></td>
+        <td style="color: <%= get_attribute(sales_forecast.status, :color) %>"><%= sales_forecast.agent %></td>
+        <td style="color: <%= get_attribute(sales_forecast.status, :color) %>"><%= sales_forecast.condition %></td>
+        <td style="color: <%= get_attribute(sales_forecast.status, :color) %>"><%= sales_forecast.person_in_charge %></td>
+        <td style="color: <%= get_attribute(sales_forecast.status, :color) %>"><%= sales_forecast.visible %></td>
         <td><%= link_to '詳細', sales_forecast %></td>
         <td><%= link_to '編集', edit_sales_forecast_path(sales_forecast) %></td>
         <td><%= link_to '削除', sales_forecast, method: :delete, data: { confirm: '削除しますか?' } %></td>
