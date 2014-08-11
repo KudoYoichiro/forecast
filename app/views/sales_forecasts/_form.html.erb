@@ -25,10 +25,10 @@
   </div>
   <div class="field">
     <%= f.label :area_id %><br>
+    <!-- 大阪サービスセンターのみでフォーキャストを管理する場合は、こちらをアクティブにしてください。
     <%= f.collection_select :area_id, @areas, :id, :name %>
-    <!-- サービスセンターごとにフォーキャストを管理する場合は、こちらをアクティブにしてください。
-    <%= f.grouped_collection_select :area_id, @service_centers, :areas, :name, :id, :name %>
     -->
+    <%= f.grouped_collection_select :area_id, @service_centers, :areas, :name, :id, :name %>
   </div>
   <div class="field">
     <%= f.label :company %><br>

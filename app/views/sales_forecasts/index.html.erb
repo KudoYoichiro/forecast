@@ -45,7 +45,7 @@
         <td style="color: <%= get_attribute(sales_forecast.status, :color) %>"><%= sales_forecast.fixed_date %></td>
         <td style="color: <%= get_attribute(sales_forecast.status, :color) %>"><%= sales_forecast.order_date %></td>
         <td style="color: <%= get_attribute(sales_forecast.status, :color) %>"><%= sales_forecast.agent %></td>
-        <td style="color: <%= get_attribute(sales_forecast.status, :color) %>"><%= sales_forecast.condition %></td>
+        <td style="color: <%= get_attribute(sales_forecast.status, :color) %>"><%= truncate(sales_forecast.condition, length: 20) %></td>
         <td style="color: <%= get_attribute(sales_forecast.status, :color) %>"><%= sales_forecast.person_in_charge %></td>
         <td style="color: <%= get_attribute(sales_forecast.status, :color) %>"><%= sales_forecast.visible %></td>
         <td><%= link_to '詳細', sales_forecast %></td>
