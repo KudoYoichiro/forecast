@@ -2,22 +2,22 @@
 
 <p>
   <strong>SC:</strong>
-  <%= @sales_forecast.service_center %>
+  <%= get_attribute(@sales_forecast.service_center, :name) %>
 </p>
 
 <p>
   <strong>客層:</strong>
-  <%= @sales_forecast.segment %>
+  <%= get_attribute(@sales_forecast.segment, :name) %>
 </p>
 
 <p>
   <strong>状態:</strong>
-  <%= @sales_forecast.status %>
+  <%= get_attribute(@sales_forecast.status, :name) %>
 </p>
 
 <p>
   <strong>地域:</strong>
-  <%= @sales_forecast.area %>
+  <%= get_attribute(@sales_forecast.area, :name) %>
 </p>
 
 <p>
@@ -42,17 +42,22 @@
 
 <p>
   <strong>金額:</strong>
-  <%= @sales_forecast.price %>
+  <%= number_with_delimiter(@sales_forecast.price) %>
 </p>
 
 <p>
   <strong>予算:</strong>
-  <%= @sales_forecast.budget %>
+  <%= get_attribute(@sales_forecast.budget, :name) %>
 </p>
 
 <p>
   <strong>確度:</strong>
-  <%= @sales_forecast.certainty %>
+  <%= get_attribute(@sales_forecast.certainty, :name) %>
+</p>
+
+<p>
+  <strong>期待値:</strong>
+  <%= number_with_delimiter(expected_value(@sales_forecast.price, get_attribute(@sales_forecast.certainty, :name))) %>
 </p>
 
 <p>

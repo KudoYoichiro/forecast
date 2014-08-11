@@ -14,6 +14,7 @@
       <th>金額</th>
       <th>予算</th>
       <th>確度</th>
+      <th>期待値</th>
       <th>申請時期</th>
       <th>確定時期</th>
       <th>発注時期</th>
@@ -28,17 +29,18 @@
   <tbody>
     <% @sales_forecasts.each do |sales_forecast| %>
       <tr>
-        <td><%= sales_forecast.service_center %></td>
-        <td><%= sales_forecast.segment %></td>
-        <td><%= sales_forecast.status %></td>
-        <td><%= sales_forecast.area %></td>
+        <td><%= get_attribute(sales_forecast.service_center, :name) %></td>
+        <td><%= get_attribute(sales_forecast.segment, :name) %></td>
+        <td><%= get_attribute(sales_forecast.status, :name) %></td>
+        <td><%= get_attribute(sales_forecast.area, :name) %></td>
         <td><%= sales_forecast.company %></td>
         <td><%= sales_forecast.division %></td>
         <td><%= sales_forecast.customer_name %></td>
         <td><%= sales_forecast.instrument %></td>
-        <td><%= sales_forecast.price %></td>
-        <td><%= sales_forecast.budget %></td>
-        <td><%= sales_forecast.certainty %></td>
+        <td><%= number_with_delimiter(sales_forecast.price) %></td>
+        <td><%= get_attribute(sales_forecast.budget, :name) %></td>
+        <td><%= get_attribute(sales_forecast.certainty, :name) %></td>
+        <td><%= number_with_delimiter(expected_value(sales_forecast.price, get_attribute(sales_forecast.certainty, :name))) %></td>
         <td><%= sales_forecast.reporting_date %></td>
         <td><%= sales_forecast.fixed_date %></td>
         <td><%= sales_forecast.order_date %></td>

@@ -1,5 +1,6 @@
 class SalesForecastsController < ApplicationController
   before_action :set_sales_forecast, only: [:show, :edit, :update, :destroy]
+  before_action :set_associations, only: [:new, :edit, :create]
 
   # GET /sales_forecasts
   # GET /sales_forecasts.json
@@ -15,6 +16,7 @@ class SalesForecastsController < ApplicationController
   # GET /sales_forecasts/new
   def new
     @sales_forecast = SalesForecast.new
+    @sales_forecast.visible = true
   end
 
   # GET /sales_forecasts/1/edit
@@ -65,6 +67,15 @@ class SalesForecastsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_sales_forecast
       @sales_forecast = SalesForecast.find(params[:id])
+    end
+    
+    def set_associations
+      @service_centers = ServiceCenter.all
+      @segments = Segment.all
+      @statuses = Status.all
+      @areas = Area.all
+      @budgets = Budget.all
+      @certainties = Certainty.all
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
