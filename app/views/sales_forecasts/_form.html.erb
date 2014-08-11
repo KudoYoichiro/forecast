@@ -26,6 +26,9 @@
   <div class="field">
     <%= f.label :area_id %><br>
     <%= f.collection_select :area_id, @areas, :id, :name %>
+    <!-- サービスセンターごとにフォーキャストを管理する場合は、こちらをアクティブにしてください。
+    <%= f.grouped_collection_select :area_id, @service_centers, :areas, :name, :id, :name %>
+    -->
   </div>
   <div class="field">
     <%= f.label :company %><br>
