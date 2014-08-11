@@ -1408,7 +1408,7 @@ pre code {
 }
 @media (min-width: 1200px) {
   .container {
-    width: 100%;
+    width: 1170px;
   }
 }
 .container-fluid {
@@ -2401,8 +2401,10 @@ input[type="date"],
 input[type="time"],
 input[type="datetime-local"],
 input[type="month"] {
+/*
   line-height: 34px;
   line-height: 1.42857143 \0;
+*/
 }
 input[type="date"].input-sm,
 input[type="time"].input-sm,
