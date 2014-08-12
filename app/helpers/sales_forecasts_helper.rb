@@ -70,4 +70,19 @@ module SalesForecastsHelper
     end
     return sum
   end
+  
+  def forecast_statuses(collection)
+    statuses = Status.pluck(:id, :name)
+    status_ids = Hash.new(0)
+    
+    @sales_forecasts.each do |sales_forecast|
+      status_ids[sales_forecast.status.id] += 1
+    end
+    
+    result = Array.new
+    statuses.each do |status|
+      result << [status[0], status[1], status_ids[status[0]]]
+    end
+    return result
+  end
 end

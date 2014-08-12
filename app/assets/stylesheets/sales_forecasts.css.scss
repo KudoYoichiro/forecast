@@ -1,3 +1,14 @@
 // Place all the styles related to the sales_forecasts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.forecast_summary {
+  margin: 5px 0;
+}
+
+.forecast_summary .data {
+}
+
+.forecast_summary .data:not(:last-child) {
+  margin-right: 2px;
+}

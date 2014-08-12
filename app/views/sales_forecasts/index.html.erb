@@ -21,10 +21,13 @@
 </ul>
 <% end %>
 
-<div>
-	総額:<%= number_with_delimiter(get_sum(@sales_forecasts,:price)) %>
-	総期待値:<%= number_with_delimiter(get_expected_sum(@sales_forecasts)) %>
+<div class="forecast_summary">
 	フォーキャスト数: <%= @sales_forecasts.size %>
+	(<% forecast_statuses(@sales_forecasts).each do |status| %>
+		<span class="data"><%= status[1] %>: <%= status[2] %></span>
+	<% end %>)
+	<span class="data">総額:<%= number_with_delimiter(get_sum(@sales_forecasts,:price)) %></span>
+	<span class="data">総期待値:<%= number_with_delimiter(get_expected_sum(@sales_forecasts)) %></span>
 </div>
 <div class="table-responsive">
 <table id="myTable" class="table table-striped table-condensed table-hover tablesorter">
