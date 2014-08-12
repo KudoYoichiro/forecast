@@ -30,7 +30,7 @@ module SalesForecastsHelper
     return '' if value.blank?|| certainty.blank?
     
     # 期待値を返す
-    number_with_delimiter(value * certainty / 100)
+    value.to_i * certainty.to_i / 100
   end
   
   # obj: オブジェクト
@@ -41,5 +41,33 @@ module SalesForecastsHelper
     
     # 引数attributeを取り出す
     obj.attributes[attr.to_s]
+  end
+  
+  # collection: 合計を求めたい属性を持つオブジェクトの集合
+  # attr: 合計を求めたい属性
+  def get_sum(collection, attr)
+    # 引数collectionがnilの場合は0を返す
+    return 0 if collection.blank?
+    
+    sum = 0
+    collection.each do |obj|
+      if !obj.attributes[attr.to_s].blank?
+        sum += obj.attributes[attr.to_s].to_i
+      end
+    end
+    return sum
+  end
+  
+  # collectinoi: 期待値の総和を求めいたオブジェクトの集合
+  def get_expected_sum(collection)
+    sum = 0
+    return sum if collection.blank?
+    
+    collection.each do |obj|
+      if !obj.price.blank? && !obj.certainty.blank?
+        sum += expected_value(obj.price, obj.certainty.name)
+      end
+    end
+    return sum
   end
 end
