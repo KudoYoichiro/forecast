@@ -27,7 +27,7 @@
 		<span class="data"><%= status[1] %>: <%= status[2] %></span>
 	<% end %>)
 	<span class="data">総額:<%= number_with_delimiter(get_sum(@sales_forecasts,:price)) %></span>
-	<span class="data">総期待値:<%= number_with_delimiter(get_expected_sum(@sales_forecasts)) %></span>
+	<span class="data">総期待額:<%= number_with_delimiter(get_expected_sum(@sales_forecasts)) %></span>
 </div>
 <div class="table-responsive">
 <table id="myTable" class="table table-striped table-condensed table-hover tablesorter">
@@ -46,7 +46,7 @@
       <th>金額</th>
       <th>予算</th>
       <th>確度</th>
-      <th>期待値</th>
+      <th>期待額</th>
       <th>申請時期</th>
       <th>確定時期</th>
       <th>発注時期</th>
@@ -54,6 +54,7 @@
       <th>状況</th>
       <th>担当</th>
       <th>表示</th>
+      <th>更新日</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -79,9 +80,10 @@
         <td style="color: <%= get_attribute(sales_forecast.status, :color) %>"><%= sales_forecast.fixed_date %></td>
         <td style="color: <%= get_attribute(sales_forecast.status, :color) %>"><%= sales_forecast.order_date %></td>
         <td style="color: <%= get_attribute(sales_forecast.status, :color) %>"><%= sales_forecast.agent %></td>
-        <td style="color: <%= get_attribute(sales_forecast.status, :color) %>"><%= truncate(sales_forecast.condition, length: 20) %></td>
+        <td style="color: <%= get_attribute(sales_forecast.status, :color) %>"><span data-toggle="tooltip" title="<%= sales_forecast.condition %>"><%= truncate(sales_forecast.condition, length: 20) %></span></td>
         <td style="color: <%= get_attribute(sales_forecast.status, :color) %>"><%= sales_forecast.person_in_charge %></td>
         <td style="color: <%= get_attribute(sales_forecast.status, :color) %>"><%= sales_forecast.visible %></td>
+        <td style="color: <%= get_attribute(sales_forecast.status, :color) %>"><%= format_datetime(sales_forecast.updated_at, :date) %></td>
         <td><%= link_to '詳細', sales_forecast %></td>
         <td><%= link_to '編集', edit_sales_forecast_path(sales_forecast) %></td>
         <td><%= link_to '削除', sales_forecast, method: :delete, data: { confirm: '削除しますか?' } %></td>

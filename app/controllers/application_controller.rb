@@ -4,5 +4,5 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   
   # For single service center use, set the sc_switch to false, otherwise set true.
-  $sc_switch = true
+  $sc_switch = false
 end
