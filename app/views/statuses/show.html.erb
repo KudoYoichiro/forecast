@@ -1,14 +1,16 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>状態:</strong>
-  <%= @status.name %>
-</p>
-
-<p>
-  <strong>表示色:</strong>
-  <span style="color: <%= @status.color %>; background-color: <%= @status.color %>"><%= @status.color %></span>
-</p>
+<table class="table table-bordered forecast_show_table">
+	<tr>
+		<td class="show_caption">状態</td>
+		<td class="show_data"><%= @status.name %></td>
+	</tr>
+	<tr>
+		<td class="show_caption">表示色</td>
+		<td class="show_data"><span style="color: <%= @status.color %>; background-color: <%= @status.color %>"><%= @status.color %></td>
+			
+	</tr>			
+</table>
 
 <%= link_to '編集', edit_status_path(@status) %> |
 <%= link_to '戻る', statuses_path %>

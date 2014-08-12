@@ -1,9 +1,11 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>SC:</strong>
-  <%= @service_center.name %>
-</p>
+<table class="table table-bordered forecast_show_table">
+	<tr>
+		<td class="show_caption">SC</td>
+		<td class="show_data"><%= @service_center.name %></td>
+	</tr>
+</table>
 
 <%= link_to '編集', edit_service_center_path(@service_center) %> |
 <%= link_to '戻る', service_centers_path %>

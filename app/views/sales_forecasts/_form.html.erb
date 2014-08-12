@@ -62,15 +62,15 @@
     <%= f.collection_select :certainty_id, @certainties, :id, :name %>
   </div>
   <div class="field">
-    <%= f.label :reporting_date %><br>
+    <%= f.label :reporting_date %> （例：<%= format_datetime(Time.now, :year_month) %>）<br>
     <%= f.month_field :reporting_date, value: @sales_forecast.reporting_date %>
   </div>
   <div class="field">
-    <%= f.label :fixed_date %><br>
+    <%= f.label :fixed_date %> （例：<%= format_datetime(Time.now, :year_month) %>）<br>
     <%= f.month_field :fixed_date, value: @sales_forecast.fixed_date %>
   </div>
   <div class="field">
-    <%= f.label :order_date %><br>
+    <%= f.label :order_date %> （例：<%= format_datetime(Time.now, :year_month) %>）<br>
     <%= f.month_field :order_date, value: @sales_forecast.order_date %>
   </div>
   <div class="field">

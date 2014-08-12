@@ -1,5 +1,23 @@
 <p id="notice"><%= notice %></p>
 
+<table class="table table-bordered forecast_show_table">
+	<tr>
+		<td class="show_caption">
+			地域:
+		</td>
+		<td class="show_data">
+			<%= @area.name %>
+		</td>
+	</tr>
+	<tr>
+		<td class="show_caption">
+			SC:
+		</td>
+		<td class="show_data">
+			<%= @area.service_centers.map{|service_center| service_center.name}*", " %>
+		</td>
+	</tr>
+</table>
 <p>
   <strong>地域:</strong>
   <%= @area.name %>

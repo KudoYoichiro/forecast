@@ -1,9 +1,11 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>予算:</strong>
-  <%= @budget.name %>
-</p>
+<table class="table table-bordered forecast_show_table">
+	<tr>
+		<td class="show_caption">予算</td>
+		<td class="show_data"><%= @budget.name %></td>
+	</tr>
+</table>
 
 <%= link_to '編集', edit_budget_path(@budget) %> |
 <%= link_to '戻る', budgets_path %>

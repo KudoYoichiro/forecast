@@ -1,9 +1,10 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>確度:</strong>
-  <%= @certainty.name %>
-</p>
+<table class="table table-bordered forecast_show_table">
+	<tr>
+		<td class="show_caption">確度</td>
+		<td class="show_data"><%= @certainty.name %>
+</table>
 
 <%= link_to '編集', edit_certainty_path(@certainty) %> |
 <%= link_to '戻る', certainties_path %>

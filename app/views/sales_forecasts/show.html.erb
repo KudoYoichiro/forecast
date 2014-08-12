@@ -1,101 +1,85 @@
 <p id="notice"><%= notice %></p>
 
-<% if $sc_switch %>
-<p>
-  <strong>SC:</strong>
-  <%= get_attribute(@sales_forecast.service_center, :name) %>
-</p>
-<% end %>
-
-<p>
-  <strong>客層:</strong>
-  <%= get_attribute(@sales_forecast.segment, :name) %>
-</p>
-
-<p>
-  <strong>状態:</strong>
-  <%= get_attribute(@sales_forecast.status, :name) %>
-</p>
-
-<p>
-  <strong>地域:</strong>
-  <%= get_attribute(@sales_forecast.area, :name) %>
-</p>
-
-<p>
-  <strong>顧客:</strong>
-  <%= @sales_forecast.company %>
-</p>
-
-<p>
-  <strong>部署:</strong>
-  <%= @sales_forecast.division %>
-</p>
-
-<p>
-  <strong>氏名:</strong>
-  <%= @sales_forecast.customer_name %>
-</p>
-
-<p>
-  <strong>機種:</strong>
-  <%= @sales_forecast.instrument %>
-</p>
-
-<p>
-  <strong>金額:</strong>
-  <%= number_with_delimiter(@sales_forecast.price) %>
-</p>
-
-<p>
-  <strong>予算:</strong>
-  <%= get_attribute(@sales_forecast.budget, :name) %>
-</p>
-
-<p>
-  <strong>確度:</strong>
-  <%= get_attribute(@sales_forecast.certainty, :name) %>
-</p>
-
-<p>
-  <strong>期待値:</strong>
-  <%= number_with_delimiter(expected_value(@sales_forecast.price, get_attribute(@sales_forecast.certainty, :name))) %>
-</p>
-
-<p>
-  <strong>申請時期:</strong>
-  <%= @sales_forecast.reporting_date %>
-</p>
-
-<p>
-  <strong>確定時期:</strong>
-  <%= @sales_forecast.fixed_date %>
-</p>
-
-<p>
-  <strong>発注時期:</strong>
-  <%= @sales_forecast.order_date %>
-</p>
-
-<p>
-  <strong>代理店:</strong>
-  <%= @sales_forecast.agent %>
-</p>
-
-<p>
-  <strong>状況:</strong>
-  <%= @sales_forecast.condition %>
-</p>
-
-<p>
-  <strong>担当:</strong>
-  <%= @sales_forecast.person_in_charge %>
-</p>
-
-<p>
-  <strong>表示:</strong>
-  <%= @sales_forecast.visible %>
-</p>
+<table class="table table-bordered forecast_show_table">
+	<% if $sc_switch %>
+	<tr>
+		<td class="show_caption">SC</td>
+		<td class="show_data"><%= get_attribute(@sales_forecast.service_center, :name) %></td>
+	</tr>
+	<% end %>
+	<tr>
+		<td class="show_caption">客層</td>
+		<td class="show_data"><%= get_attribute(@sales_forecast.segment, :name) %></td>
+	</tr>
+	<tr>
+		<td class="show_caption">状態</td>
+		<td class="show_data"><%= get_attribute(@sales_forecast.status, :name) %></td>
+	</tr>
+	<tr>
+		<td class="show_caption">地域</td>
+		<td class="show_data"><%= get_attribute(@sales_forecast.area, :name) %></td>
+	</tr>
+	<tr>
+		<td class="show_caption">顧客</td>
+		<td class="show_data"><%= @sales_forecast.company %></td>
+	</tr>
+	<tr>
+		<td class="show_caption">部署</td>
+		<td class="show_data"><%= @sales_forecast.division %></td>
+	</tr>
+	<tr>
+		<td class="show_caption">氏名</td>
+		<td class="show_data"><%= @sales_forecast.customer_name %></td>
+	</tr>
+	<tr>
+		<td class="show_caption">機種</td>
+		<td class="show_data"><%= @sales_forecast.instrument %></td>
+	</tr>
+	<tr>
+		<td class="show_caption">金額</td>
+		<td class="show_data"><%= number_with_delimiter(@sales_forecast.price) %></td>
+	</tr>
+	<tr>
+		<td class="show_caption">予算</td>
+		<td class="show_data"><%= get_attribute(@sales_forecast.budget, :name) %></td>
+	</tr>
+	<tr>
+		<td class="show_caption">確度</td>
+		<td class="show_data"><%= get_attribute(@sales_forecast.certainty, :name) %></td>
+	</tr>
+	<tr>
+		<td class="show_caption">期待値</td>
+		<td class="show_data"><%= number_with_delimiter(expected_value(@sales_forecast.price, get_attribute(@sales_forecast.certainty, :name))) %></td>
+	</tr>
+	<tr>
+		<td class="show_caption">申請時期</td>
+		<td class="show_data"><%= @sales_forecast.reporting_date %></td>
+	</tr>
+	<tr>
+		<td class="show_caption">確定時期</td>
+		<td class="show_data"><%= @sales_forecast.fixed_date %></td>
+	</tr>
+	<tr>
+		<td class="show_caption">発注時期</td>
+		<td class="show_data"><%= @sales_forecast.order_date %></td>
+	</tr>
+	<tr>
+		<td class="show_caption">代理店</td>
+		<td class="show_data"><%= @sales_forecast.agent %></td>
+	</tr>
+	<tr>
+		<td class="show_caption">状況</td>
+		<td class="show_data"><%= @sales_forecast.condition %></td>
+	</tr>
+	<tr>
+		<td class="show_caption">担当</td>
+		<td class="show_data"><%= @sales_forecast.person_in_charge %></td>
+	</tr>
+	<tr>
+		<td class="show_caption">表示</td>
+		<td class="show_data"><%= @sales_forecast.visible %></td>
+	</tr>
+</table>
 
 <%= link_to '編集', edit_sales_forecast_path(@sales_forecast) %> |
 <%= link_to '戻る', sales_forecasts_path %>

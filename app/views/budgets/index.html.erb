@@ -1,10 +1,10 @@
 <h1>予算一覧</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>予算</th>
-      <th colspan="3"></th>
+      <th></th>
     </tr>
   </thead>
 
@@ -12,9 +12,11 @@
     <% @budgets.each do |budget| %>
       <tr>
         <td><%= budget.name %></td>
-        <td><%= link_to '詳細', budget %></td>
-        <td><%= link_to '編集', edit_budget_path(budget) %></td>
-        <td><%= link_to '削除', budget, method: :delete, data: { confirm: '削除しますか?' } %></td>
+        <td>
+        	<%= link_to '詳細', budget, class: :forecast_contorl %>
+        	<%= link_to '編集', edit_budget_path(budget), class: :forecast_control %>
+        	<%= link_to '削除', budget, method: :delete, data: { confirm: '削除しますか?' }, class: :forecast_control %>
+        </td>
       </tr>
     <% end %>
   </tbody>

@@ -6,14 +6,19 @@ class SalesForecastsController < ApplicationController
   # GET /sales_forecasts.json
   def index
     @service_centers = ServiceCenter.all
-    @sales_forecasts = SalesForecast.all
     @service_center_id = params[:sc]
     
-    unless params[:sc].blank?
-      @sales_forecasts.where!(service_center_id: params[:sc])
-    end
     if params[:show_all].blank?
-      @sales_forecasts.where!(visible: true)
+      @sales_forecasts = SalesForecast.where(visible: true)
+      unless params[:sc].blank?
+        @sales_forecasts.where!(service_center_id: params[:sc])
+      end
+    else
+      if params[:sc].blank?
+        @sales_forecasts = SalesForecast.all
+      else
+        @sales_forecasts = SalesForecast.where(service_center_id: params[:sc])
+      end
     end
     @sales_forecasts.order!(updated_at: :desc)
   end

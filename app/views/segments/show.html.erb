@@ -1,9 +1,11 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>客層:</strong>
-  <%= @segment.name %>
-</p>
+<table class="table table-bordered forecast_show_table">
+	<tr>
+		<td class="show_caption">客層</td>
+		<td class="show_data"><%= @segment.name %></td>
+	</tr>
+</table>
 
 <%= link_to '編集', edit_segment_path(@segment) %> |
 <%= link_to '戻る', segments_path %>

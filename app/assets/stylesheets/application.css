@@ -15,3 +15,17 @@
  *= require_tree .
  *= require_self
  */
+
+.forecast_show_table .show_caption {
+	color: #C6485B;
+	width: 10%;
+	text-align: left;
+}
+
+.forecast_show_table .show_data {
+	
+}
+
+.forecast_control {
+	margin: 5px;
+}
