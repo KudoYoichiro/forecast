@@ -28,6 +28,7 @@ class AreasController < ApplicationController
   # POST /areas.json
   def create   
     @area = Area.new(area_params)
+    @service_centers = ServiceCenter.all
     unless params[:service_centers].blank?
       service_centers = ServiceCenter.find(params[:service_centers])
       @area.service_centers << service_centers
