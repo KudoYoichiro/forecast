@@ -7,11 +7,15 @@ class SalesForecastsController < ApplicationController
   def index
     @service_centers = ServiceCenter.all
     @service_center_id = params[:sc]
+    @show_all = params[:show_all]
     
     if params[:show_all].blank?
       @sales_forecasts = SalesForecast.where(visible: true)
       unless params[:sc].blank?
         @sales_forecasts.where!(service_center_id: params[:sc])
+      end
+      unless params[:status].blank?
+        @sales_forecasts.where!(status_id: params[:status])
       end
     else
       if params[:sc].blank?
@@ -19,7 +23,11 @@ class SalesForecastsController < ApplicationController
       else
         @sales_forecasts = SalesForecast.where(service_center_id: params[:sc])
       end
+      unless params[:status].blank?
+        @sales_forecasts.where!(status_id: params[:status])
+      end
     end
+    
     @sales_forecasts.order!(updated_at: :desc)
   end
 
