@@ -71,17 +71,18 @@ module SalesForecastsHelper
     return sum
   end
   
+  # collection: SalesForecastのコレクション
   def forecast_statuses(collection)
     statuses = Status.pluck(:id, :name)
     status_ids = Hash.new(0)
     
-    @sales_forecasts.each do |sales_forecast|
+    collection.each do |sales_forecast|
       status_ids[sales_forecast.status.id] += 1 unless sales_forecast.status.blank?
     end
     
     result = Array.new
     statuses.each do |status|
-      result << [status[0], status[1], status_ids[status[0]]]
+      result << [status[0], status[1], status_ids[status[0]]] # status[0]: id、status[1]: name
     end
     return result
   end
