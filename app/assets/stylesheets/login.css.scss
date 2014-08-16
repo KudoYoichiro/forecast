@@ -1,0 +1,18 @@
+// Place all the styles related to the login controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.login-top {
+  background-image: image-url("login1.jpg");
+  background-size: cover;
+  color: #fff;
+}
+
+.login-top .logo-text {
+  margin: 50px 0 0 0;
+  text-align: right;
+}
+
+.login-form {
+  margin: 50px 0 0 0;
+}

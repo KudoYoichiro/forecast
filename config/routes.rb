@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'login/index'
+  
+  post 'login/auth'
+  
+  post 'login/logout'
+
   resources :sales_forecasts
 
   resources :certainties

@@ -35,6 +35,11 @@
 						</ul>
 					</li>
 				</ul>
+				<%= form_tag({controller: :login, action: :logout}, class: "navbar-form navbar-right", role: "form") do %>
+					<% if @usr %>
+						<%= submit_tag 'Sign out', class: "btn btn-default" %>
+					<% end %>
+				<% end %>
 			</div><!--/.nav-collapse -->
 		</div>
 	</div>
