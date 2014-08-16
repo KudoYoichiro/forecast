@@ -1,10 +1,14 @@
 Rails.application.routes.draw do
+  get 'admin/index'
+  
+  post 'admin/set_database_user'
+
   get 'login/index'
   
   post 'login/auth'
   
   post 'login/logout'
-
+  
   resources :sales_forecasts
 
   resources :certainties
