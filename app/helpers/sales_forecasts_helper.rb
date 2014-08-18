@@ -74,16 +74,33 @@ module SalesForecastsHelper
   # collection: SalesForecastのコレクション
   def forecast_statuses(collection)
     statuses = Status.pluck(:id, :name)
-    status_ids = Hash.new(0)
+    status_count = Hash.new(0)
     
     collection.each do |sales_forecast|
-      status_ids[sales_forecast.status.id] += 1 unless sales_forecast.status.blank?
+      status_count[sales_forecast.status.id] += 1 unless sales_forecast.status.blank?
     end
     
     result = Array.new
     statuses.each do |status|
-      result << [status[0], status[1], status_ids[status[0]]] # status[0]: id、status[1]: name
+      result << [status[0], status[1], status_count[status[0]]] # status[0]: id、status[1]: name
     end
+    
+    return result
+  end
+  
+  def forecast_segments(collection)
+    segments = Segment.pluck(:id, :name)
+    segment_count = Hash.new(0)
+    
+    collection.each do |sales_forecast|
+      segment_count[sales_forecast.segment_id] += 1 unless sales_forecast.segment.blank?
+    end
+    
+    result = Array.new
+    segments.each do |segment|
+      result << [segment[0], segment[1], segment_count[segment[0]]]
+    end
+    
     return result
   end
 end

@@ -14,8 +14,10 @@ class SalesForecastsController < ApplicationController
       unless params[:sc].blank?
         @sales_forecasts.where!(service_center_id: params[:sc])
       end
-      unless params[:status].blank?
+      if !params[:status].blank?
         @sales_forecasts.where!(status_id: params[:status])
+      elsif !params[:segment].blank?
+        @sales_forecasts.where!(segment_id: params[:segment])
       end
     else
       if params[:sc].blank?
@@ -23,8 +25,10 @@ class SalesForecastsController < ApplicationController
       else
         @sales_forecasts = SalesForecast.where(service_center_id: params[:sc])
       end
-      unless params[:status].blank?
+      if !params[:status].blank?
         @sales_forecasts.where!(status_id: params[:status])
+      elsif !params[:segment].blank?
+        @sales_forecasts.where!(segment_id: params[:segment])
       end
     end
     
