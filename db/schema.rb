@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140816051900) do
+ActiveRecord::Schema.define(version: 20140819233952) do
 
   create_table "areas", force: true do |t|
     t.string   "name"
@@ -52,7 +52,7 @@ ActiveRecord::Schema.define(version: 20140816051900) do
     t.string   "fixed_date"
     t.string   "order_date"
     t.string   "agent"
-    t.text     "condition"
+    t.text     "condition_text"
     t.string   "person_in_charge"
     t.boolean  "visible"
     t.datetime "created_at"
