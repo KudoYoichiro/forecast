@@ -117,6 +117,6 @@ class SalesForecastsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def sales_forecast_params
-      params.require(:sales_forecast).permit(:service_center_id, :segment_id, :status_id, :area_id, :company, :division, :customer_name, :instrument, :price, :budget_id, :certainty_id, :reporting_date, :fixed_date, :order_date, :agent, :condition, :person_in_charge, :visible)
+      params.require(:sales_forecast).permit(:service_center_id, :segment_id, :status_id, :area_id, :company, :division, :customer_name, :instrument, :price, :budget_id, :certainty_id, :reporting_date, :fixed_date, :order_date, :agent, :condition_text, :person_in_charge, :visible)
     end
 end

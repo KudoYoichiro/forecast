@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  post 'keyword/search'
+
   get 'admin/index'
   
   post 'admin/set_database_user'

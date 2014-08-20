@@ -21,7 +21,7 @@ ja:
         budget_id: 予算
         certainty_id: 確度
         company: 顧客名
-        condition: 状況
+        condition_text: 状況
         customer_name: 氏名
         division: 部署
         fixed_date: 確定時期
