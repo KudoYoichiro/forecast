@@ -41,9 +41,9 @@
 					</ul>
 					<%= form_tag({controller: :keyword, action: :search}, class: "navbar-form navbar-right", role: "form") do %>
 						<div class="form-group">
-							<%= text_field_tag :keywd, '', class: "form-control", placeholder: "Search" %>
+							<%= text_field_tag :keywd, '', class: "form-control", placeholder: "Keyword" %>
 						</div>
-						<%= submit_tag 'Sign out', class: "btn btn-default" %>
+						<%= submit_tag 'Search', class: "btn btn-default" %>
 					<% end %>
 				</div><!--/.nav-collapse -->
 			<% end %>
