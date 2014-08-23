@@ -22,7 +22,7 @@
 			<% if @usr %>
 				<div class="collapse navbar-collapse">
 					<%= form_tag({controller: :login, action: :logout}, class: "navbar-form navbar-right", role: "form") do %>
-						<%= submit_tag 'Sign out', class: "btn btn-default" %>
+						<%= submit_tag 'Sign out', class: "btn btn-link" %>
 					<% end %>
 					<ul class="nav navbar-nav navbar-right">
 						<li class="dropdown">

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'keyword/search'
   post 'keyword/search'
 
   get 'admin/index'

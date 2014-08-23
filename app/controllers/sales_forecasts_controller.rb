@@ -5,7 +5,7 @@ class SalesForecastsController < ApplicationController
   # GET /sales_forecasts
   # GET /sales_forecasts.json
   def index
-    per_page = 10
+    per_page = 5
     
     @service_centers = ServiceCenter.all
     @show_all = params[:show_all]
@@ -118,20 +118,6 @@ class SalesForecastsController < ApplicationController
       @areas = Area.all
       @budgets = Budget.all
       @certainties = Certainty.all
-    end
-    
-    def paginate(obj, per_page)
-      @current_page = params[:page].blank? ? 1 : params[:page].to_i
-      @num_of_pages = (obj.size / per_page.to_f).ceil
-      
-      case params[:page_to]
-      when "asc"
-        @current_page += 1 if @current_page < @num_of_pages
-      when "desc"
-        @current_page -= 1 if @current_page > 1
-      end
-      
-      return obj.limit(per_page).offset(per_page * (@current_page - 1))
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
