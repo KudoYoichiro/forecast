@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   before_action :check_logined
   
   # For single service center use, set the sc_switch to false, otherwise set true.
-  $sc_switch = false
+  $sc_switch = true
   
   
   private

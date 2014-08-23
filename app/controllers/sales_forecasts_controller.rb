@@ -5,9 +5,13 @@ class SalesForecastsController < ApplicationController
   # GET /sales_forecasts
   # GET /sales_forecasts.json
   def index
+    per_page = 10
+    
     @service_centers = ServiceCenter.all
-    @service_center_id = params[:sc]
     @show_all = params[:show_all]
+    @sc = params[:sc]
+    @status = params[:status]
+    @segment = params[:segment]
     
     if params[:show_all].blank?
       @sales_forecasts = SalesForecast.where(visible: true)
@@ -33,6 +37,7 @@ class SalesForecastsController < ApplicationController
     end
     
     @sales_forecasts.order!(updated_at: :desc)
+    @paginated_sales_forecasts = paginate(@sales_forecasts, per_page)
   end
 
   # GET /sales_forecasts/1
@@ -44,7 +49,7 @@ class SalesForecastsController < ApplicationController
   def new
     @sales_forecast = SalesForecast.new
     @sales_forecast.visible = true
-    @service_center_id = params[:sc]
+    @sc = params[:sc]
 
     unless params[:sc].blank?
       service_center = ServiceCenter.find(params[:sc])
@@ -56,7 +61,7 @@ class SalesForecastsController < ApplicationController
 
   # GET /sales_forecasts/1/edit
   def edit
-    @service_center_id = @sales_forecast.service_center.id unless @sales_forecast.service_center.blank?
+    @sc = @sales_forecast.service_center.id unless @sales_forecast.service_center.blank?
     @selected_area_id = @sales_forecast.area.id unless @sales_forecast.area.blank?
   end
 
@@ -113,6 +118,20 @@ class SalesForecastsController < ApplicationController
       @areas = Area.all
       @budgets = Budget.all
       @certainties = Certainty.all
+    end
+    
+    def paginate(obj, per_page)
+      @current_page = params[:page].blank? ? 1 : params[:page].to_i
+      @num_of_pages = (obj.size / per_page.to_f).ceil
+      
+      case params[:page_to]
+      when "asc"
+        @current_page += 1 if @current_page < @num_of_pages
+      when "desc"
+        @current_page -= 1 if @current_page > 1
+      end
+      
+      return obj.limit(per_page).offset(per_page * (@current_page - 1))
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

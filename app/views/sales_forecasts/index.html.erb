@@ -10,11 +10,11 @@
 
 <% if $sc_switch %>
 <ul class="nav nav-tabs" role="tablist">
-	<li<% if @service_center_id.nil? %> class="active" <% end %>>
+	<li<% if @sc.nil? %> class="active" <% end %>>
 		<%= link_to 'すべて', sales_forecasts_path %>
 	</li>
 	<% @service_centers.each do |service_center| %>
-	<li<% if service_center.id == @service_center_id.to_i %> class="active" <% end %>>
+	<li<% if service_center.id == @sc.to_i %> class="active" <% end %>>
 		<%= link_to service_center.name, {action: :index, sc: service_center.id} %>
 	</li>
 	<% end %>
@@ -25,11 +25,11 @@
 	件数: <%= @sales_forecasts.size %>
 	(
 		<% forecast_statuses(@sales_forecasts).each do |status| %>
-			<span class="data"><%= link_to status[1], {action: :index, show_all: @show_all, sc: @service_center_id, status: status[0]} %>: <%= status[2] %></span>
+			<span class="data"><%= link_to status[1], {action: :index, show_all: @show_all, sc: @sc, status: status[0]} %>: <%= status[2] %></span>
 		<% end %>
 		|
 		<% forecast_segments(@sales_forecasts).each do |segment| %>
-			<span class="data"><%= link_to segment[1], {action: :index, show_all: @show_all, sc: @service_center_id, segment: segment[0]} %>: <%= segment[2] %></span>
+			<span class="data"><%= link_to segment[1], {action: :index, show_all: @show_all, sc: @sc, segment: segment[0]} %>: <%= segment[2] %></span>
 		<% end %>
 	)
 	<span class="data">総額:<%= number_with_delimiter(get_sum(@sales_forecasts,:price)) %></span>
@@ -66,7 +66,7 @@
   </thead>
 
   <tbody>
-    <% @sales_forecasts.each do |sales_forecast| %>
+    <% @paginated_sales_forecasts.each do |sales_forecast| %>
       <tr>
       	<% if $sc_switch %>
         <td style="color: <%= get_attribute(sales_forecast.status, :color) %>"><%= get_attribute(sales_forecast.service_center, :name) %></td>
@@ -99,11 +99,15 @@
 </table>
 </div>
 
+<ul class="pagination pagination-sm">
+	<%== pagination(@current_page, @num_of_pages, {action: :index, show_all: @show_all, sc: @sc, status: @status, segment: @segment}) %>
+</ul>
+
 <br>
 
-<%= link_to '新規作成', {action: :new, sc: @service_center_id} %> | 
+<%= link_to '新規作成', {action: :new, sc: @sc} %> | 
 <% if @show_all.blank? %>
-	<%= link_to 'すべてを表示', {action: :index, show_all: "true", sc: @service_center_id} %>
+	<%= link_to 'すべてを表示', {action: :index, show_all: "true", sc: @sc} %>
 <% else %>
-	<%= link_to '通常表示', {action: :index, sc: @service_center_id} %>
+	<%= link_to '通常表示', {action: :index, sc: @sc} %>
 <% end %>
