@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
+  get 'sales_forecasts/download'
+  
   get 'keyword/search'
+  
   post 'keyword/search'
 
   get 'admin/index'

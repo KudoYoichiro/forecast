@@ -5,7 +5,7 @@ class SalesForecastsController < ApplicationController
   # GET /sales_forecasts
   # GET /sales_forecasts.json
   def index
-    per_page = 5
+    per_page = 3
     
     @service_centers = ServiceCenter.all
     @show_all = params[:show_all]
@@ -13,28 +13,7 @@ class SalesForecastsController < ApplicationController
     @status = params[:status]
     @segment = params[:segment]
     
-    if params[:show_all].blank?
-      @sales_forecasts = SalesForecast.where(visible: true)
-      unless params[:sc].blank?
-        @sales_forecasts.where!(service_center_id: params[:sc])
-      end
-      if !params[:status].blank?
-        @sales_forecasts.where!(status_id: params[:status])
-      elsif !params[:segment].blank?
-        @sales_forecasts.where!(segment_id: params[:segment])
-      end
-    else
-      if params[:sc].blank?
-        @sales_forecasts = SalesForecast.all
-      else
-        @sales_forecasts = SalesForecast.where(service_center_id: params[:sc])
-      end
-      if !params[:status].blank?
-        @sales_forecasts.where!(status_id: params[:status])
-      elsif !params[:segment].blank?
-        @sales_forecasts.where!(segment_id: params[:segment])
-      end
-    end
+    @sales_forecasts = select_sales_forecasts
     
     @sales_forecasts.order!(updated_at: :desc)
     @paginated_sales_forecasts = paginate(@sales_forecasts, per_page)
@@ -104,6 +83,13 @@ class SalesForecastsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def download
+    @sales_forecasts = select_sales_forecasts
+    @sales_forecasts.order!(service_center_id: :asc)
+    @sales_forecasts.order!(segment_id: :asc)
+    @sales_forecasts.order!(status_id: :asc)
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -111,6 +97,33 @@ class SalesForecastsController < ApplicationController
       @sales_forecast = SalesForecast.find(params[:id])
     end
     
+    def select_sales_forecasts
+      if params[:show_all].blank?
+        sales_forecasts = SalesForecast.where(visible: true)
+        unless params[:sc].blank?
+          sales_forecasts.where!(service_center_id: params[:sc])
+        end
+        if !params[:status].blank?
+          sales_forecasts.where!(status_id: params[:status])
+        elsif !params[:segment].blank?
+          sales_forecasts.where!(segment_id: params[:segment])
+        end
+      else
+        if params[:sc].blank?
+          sales_forecasts = SalesForecast.all
+        else
+          sales_forecasts = SalesForecast.where(service_center_id: params[:sc])
+        end
+        if !params[:status].blank?
+          sales_forecasts.where!(status_id: params[:status])
+        elsif !params[:segment].blank?
+          sales_forecasts.where!(segment_id: params[:segment])
+        end
+      end
+      
+      return sales_forecasts
+    end
+
     def set_associations
       @service_centers = ServiceCenter.all
       @segments = Segment.all
