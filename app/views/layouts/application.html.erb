@@ -43,6 +43,7 @@
 						<div class="form-group">
 							<%= text_field_tag :keywd, '', class: "form-control", placeholder: "Keyword" %>
 						</div>
+						<%= hidden_field_tag :show_all, @show_all  %>
 						<%= submit_tag 'Search', class: "btn btn-default" %>
 					<% end %>
 				</div><!--/.nav-collapse -->

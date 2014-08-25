@@ -5,7 +5,7 @@ class SalesForecastsController < ApplicationController
   # GET /sales_forecasts
   # GET /sales_forecasts.json
   def index
-    per_page = 3
+    per_page = 50
     
     @service_centers = ServiceCenter.all
     @show_all = params[:show_all]

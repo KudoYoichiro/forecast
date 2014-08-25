@@ -79,6 +79,10 @@
 		<td class="show_caption">表示</td>
 		<td class="show_data"><%= @sales_forecast.visible %></td>
 	</tr>
+	<tr>
+		<td class="show_caption">更新日</td>
+		<td class="show_data"><%= format_datetime(@sales_forecast.updated_at, :date) %></td>
+	</tr>
 </table>
 
 <%= link_to '編集', edit_sales_forecast_path(@sales_forecast) %> |
