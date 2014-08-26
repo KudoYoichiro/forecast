@@ -18,7 +18,8 @@ result << "確定時期" + ","
 result << "発注時期" + ","
 result << "代理店" + ","
 result << "状況" + ","
-result << "担当"
+result << "担当" + ","
+result << "更新日"
 result << "\r"
 @sales_forecasts.each do |forecast|
 	result << forecast.service_center.name unless forecast.service_center.blank?
@@ -32,7 +33,7 @@ result << "\r"
 	result << forecast.company + ","
 	result << forecast.division + ","
 	result << forecast.customer_name + ","
-	result << forecast.instrument + ","
+	result << forecast.instrument.gsub(/,/, "、") + ","
 	result << forecast.price.to_s + ","
 	result << forecast.budget.name unless forecast.budget.blank?
 	result << ","
@@ -45,7 +46,8 @@ result << "\r"
 	result << forecast.order_date + ","
 	result << forecast.agent + ","
 	result << forecast.condition_text.gsub(/[\r\n]/, "").gsub(/,/, "、") + ","
-	result << forecast.person_in_charge
+	result << forecast.person_in_charge + ","
+	result << format_datetime(forecast.updated_at, :date)
 	result << "\r"
 end
 

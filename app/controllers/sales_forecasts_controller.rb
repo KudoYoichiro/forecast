@@ -13,7 +13,7 @@ class SalesForecastsController < ApplicationController
     @status = params[:status]
     @segment = params[:segment]
     
-    @sales_forecasts = select_sales_forecasts
+    @sales_forecasts = select_sales_forecasts_with_sorting
     
     @paginated_sales_forecasts = paginate(@sales_forecasts, per_page)
   end
@@ -119,6 +119,12 @@ class SalesForecastsController < ApplicationController
           sales_forecasts.where!(segment_id: params[:segment])
         end
       end
+      
+      return sales_forecasts
+    end
+    
+    def select_sales_forecasts_with_sorting
+      sales_forecasts = select_sales_forecasts
       
       if params[:sort_in].blank?
         @sort_in = :desc
