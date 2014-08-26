@@ -27,10 +27,10 @@ module ApplicationHelper
   # certainty: 確率
   def expected_value(value, certainty)
     # 引数vakueがnilの場合は空文字を返す
-    return '' if value.blank?|| certainty.blank?
+    return '' if value.blank? || certainty.blank?
     
     # 期待値を返す
-    value.to_i * certainty.to_i / 100
+    (value.to_i * certainty.to_i / 100)
   end
   
   # obj: オブジェクト
