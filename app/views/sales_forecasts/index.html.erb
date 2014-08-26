@@ -1,9 +1,11 @@
 <script>
+/*
 	$(document).ready(function()
 	{
-		$("#myTable").tablesorter();
+		$("#forecast_table").tablesorter();
 	}
 );
+*/
 </script>
 
 <h1>フォーキャスト一覧</h1>
@@ -35,41 +37,41 @@
 	<span class="data">総額:<%= number_with_delimiter(get_sum(@sales_forecasts,:price)) %></span>
 	<span class="data">期待総額:<%= number_with_delimiter(get_expected_sum(@sales_forecasts)) %></span>
 	<% if @show_all == true.to_s %>
-		<span class="data">（全表示モード）</span>
+		<span class="data bg-danger text-danger">全表示モード</span>
 	<% end %>
 </div>
 
 <% if @num_of_pages > 1 %>
 <ul class="pagination pagination-sm">
-	<%== pagination(@current_page, @num_of_pages, {action: :index, show_all: @show_all, sc: @sc, status: @status, segment: @segment}) %>
+	<%== pagination(@current_page, @num_of_pages, {action: :index, show_all: @show_all, sc: @sc, status: @status, segment: @segment, sort_by: @sort_by, sort_in: @sort_in}) %>
 </ul>
 <% end %>
 
 <div class="table-responsive">
-<table id="myTable" class="table table-striped table-condensed table-bordered table-hover tablesorter">
+<table id="forecast_table" class="table table-striped table-condensed table-bordered table-hover">
   <thead>
-    <tr>
+    <tr class="forecast-table-header">
       <% if $sc_switch %>
-      <th>SC</th>
+      <th><%= link_to 'SC', {action: :index, show_all: @show_all, sc: @sc, status: @status, segment: @segment, sort_by: "service_center", sort_in: @sort_in} %></th>
       <% end %>
-      <th>客層</th>
-      <th>状態</th>
-      <th>地域</th>
-      <th>顧客</th>
-      <th>部署</th>
-      <th>氏名</th>
-      <th>機種</th>
-      <th>金額</th>
-      <th>予算</th>
-      <th>確度</th>
-      <th>期待額</th>
-      <th>申請時期</th>
-      <th>確定時期</th>
-      <th>発注時期</th>
-      <th>代理店</th>
-      <th>状況</th>
-      <th>担当</th>
-      <th>更新日</th>
+      <th><%= link_to '客層', {action: :index, show_all: @show_all, sc: @sc, status: @status, segment: @segment, sort_by: "segment", sort_in: @sort_in} %></th>
+      <th><%= link_to '状態', {action: :index, show_all: @show_all, sc: @sc, status: @status, segment: @segment, sort_by: "status", sort_in: @sort_in} %></th>
+      <th><%= link_to '地域', {action: :index, show_all: @show_all, sc: @sc, status: @status, segment: @segment, sort_by: "area", sort_in: @sort_in} %></th>
+      <th><%= link_to '顧客', {action: :index, show_all: @show_all, sc: @sc, status: @status, segment: @segment, sort_by: "company", sort_in: @sort_in} %></th>
+      <th><%= link_to '部署', {action: :index, show_all: @show_all, sc: @sc, status: @status, segment: @segment, sort_by: "division", sort_in: @sort_in} %></th>
+      <th><%= link_to '氏名', {action: :index, show_all: @show_all, sc: @sc, status: @status, segment: @segment, sort_by: "customer_name", sort_in: @sort_in} %></th>
+      <th><%= link_to '機種', {action: :index, show_all: @show_all, sc: @sc, status: @status, segment: @segment, sort_by: "instrument", sort_in: @sort_in} %></th>
+      <th><%= link_to '金額', {action: :index, show_all: @show_all, sc: @sc, status: @status, segment: @segment, sort_by: "price", sort_in: @sort_in} %></th>
+      <th><%= link_to '予算', {action: :index, show_all: @show_all, sc: @sc, status: @status, segment: @segment, sort_by: "budget", sort_in: @sort_in} %></th>
+      <th><%= link_to '確度', {action: :index, show_all: @show_all, sc: @sc, status: @status, segment: @segment, sort_by: "certainty", sort_in: @sort_in} %></th>
+      <th><%= link_to '期待額', {action: :index, show_all: @show_all, sc: @sc, status: @status, segment: @segment, sort_by: "expected_value", sort_in: @sort_in} %></th>
+      <th><%= link_to '申請時期', {action: :index, show_all: @show_all, sc: @sc, status: @status, segment: @segment, sort_by: "reporting_date", sort_in: @sort_in} %></th>
+      <th><%= link_to '確定時期', {action: :index, show_all: @show_all, sc: @sc, status: @status, segment: @segment, sort_by: "fixed_date", sort_in: @sort_in} %></th>
+      <th><%= link_to '発注時期', {action: :index, show_all: @show_all, sc: @sc, status: @status, segment: @segment, sort_by: "order_date", sort_in: @sort_in} %></th>
+      <th><%= link_to '代理店', {action: :index, show_all: @show_all, sc: @sc, status: @status, segment: @segment, sort_by: "agent", sort_in: @sort_in} %></th>
+      <th><%= link_to '状況', {action: :index, show_all: @show_all, sc: @sc, status: @status, segment: @segment, sort_by: "condition_text", sort_in: @sort_in} %></th>
+      <th><%= link_to '担当', {action: :index, show_all: @show_all, sc: @sc, status: @status, segment: @segment, sort_by: "person_in_charge", sort_in: @sort_in} %></th>
+      <th><%= link_to '更新日', {action: :index, show_all: @show_all, sc: @sc, status: @status, segment: @segment, sort_by: "updated_at", sort_in: @sort_in} %></th>
       <th colspan="3"></th>
     </tr>
   </thead>

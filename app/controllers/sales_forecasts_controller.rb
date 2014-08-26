@@ -15,7 +15,6 @@ class SalesForecastsController < ApplicationController
     
     @sales_forecasts = select_sales_forecasts
     
-    @sales_forecasts.order!(updated_at: :desc)
     @paginated_sales_forecasts = paginate(@sales_forecasts, per_page)
   end
 
@@ -119,6 +118,57 @@ class SalesForecastsController < ApplicationController
         elsif !params[:segment].blank?
           sales_forecasts.where!(segment_id: params[:segment])
         end
+      end
+      
+      if params[:sort_in].blank?
+        @sort_in = :desc
+      # ページングするときは、ソートの方向を維持する
+      elsif !params[:page].blank?
+        @sort_in = params[:sort_in].to_sym
+      else
+        @sort_in = params[:sort_in].to_sym == :asc ? :desc : :asc
+      end
+       
+      @sort_by = params[:sort_by]
+      case @sort_by
+      when "service_center"
+        sales_forecasts.order!(service_center_id: @sort_in)
+      when "segment"
+        sales_forecasts.order!(segment_id: @sort_in)
+      when "status"
+        sales_forecasts.order!(status_id: @sort_in)
+      when "area"
+        sales_forecasts.order!(area_id: @sort_in)
+      when "company"
+        sales_forecasts.order!(company: @sort_in)
+      when "division"
+        sales_forecasts.order!(division: @sort_in)
+      when "customer_name"
+        sales_forecasts.order!(customer_name: @sort_in)
+      when "instrument"
+        sales_forecasts.order!(instrument: @sort_in)
+      when "price"
+        sales_forecasts.order!(price: @sort_in)
+      when "budget"
+        sales_forecasts.order!(budget_id: @sort_in)
+      when "certainty"
+        sales_forecasts.order!(certainty_id: @sort_in)
+      when "reporting_date"
+        sales_forecasts.order!(reporting_date: @sort_in)
+      when "fixed_date"
+        sales_forecasts.order!(fixed_date: @sort_in)
+      when "order_date"
+        sales_forecasts.order!(order_date: @sort_in)
+      when "agent"
+        sales_forecasts.order!(agent: @sort_in)
+      when "condition_text"
+        sales_forecasts.order!(condition_text: @sort_in)
+      when "person_in_charge"
+        sales_forecasts.order!(person_in_charge: @sort_in)
+      when "updated_at"
+        sales_forecasts.order!(updated_at: @sort_in)
+      else
+        sales_forecasts.order!(updated_at: :desc)
       end
       
       return sales_forecasts

@@ -2,27 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.forecast_summary {
-  margin: 5px 0;
-  padding: 3px 5px;
-  background-color: #F2F2E5;
-}
-
-.forecast_summary .data {
-}
-
-.forecast_summary .data a:visited {
-  color: #000;
-}
-
-.forecast_summary .data a:hover {
-  color: #fff;
-}
-
-.forecast_summary .data:not(:last-child) {
-  margin-right: 2px;
-}
-
 .control-buttons {
   margin-bottom: 0px;
 }

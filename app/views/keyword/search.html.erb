@@ -22,7 +22,7 @@
 	<span class="data">総額:<%= number_with_delimiter(get_sum(@sales_forecasts,:price)) %></span>
 	<span class="data">期待総額:<%= number_with_delimiter(get_expected_sum(@sales_forecasts)) %></span>
 	<% if @show_all == true.to_s %>
-		<span class="data">（全表示モード）</span>
+		<span class="data bg-danger text-danger">全表示モード</span>
 	<% end %>
 </div>
 
